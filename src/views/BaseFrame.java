@@ -5,17 +5,26 @@
  */
 package views;
 
+import controllers.Materiales;
+import java.util.List;
+import models.Material;
+import utils.OracleUtils;
+
 /**
  *
  * @author Ricardo
  */
 public class BaseFrame extends javax.swing.JFrame {
-
+    List<Material> materiales = (List<Material>) Materiales.select(OracleUtils.getDBConexion(), "select * from material", Material.class);
     /**
      * Creates new form BaseFrame
      */
     public BaseFrame() {
         initComponents();
+        materiales.stream().forEach((material)->{
+            System.out.println("material = " + material.getIdmaterial());
+        });
+        
     }
 
     /**

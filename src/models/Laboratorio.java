@@ -1,42 +1,44 @@
 package models;
 
 import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 
 class Laboratorio {
-
     public static final String PROP_IDLABORATORIO = "PROP_IDLABORATORIO";
     public static final String PROP_NOMBRE = "PROP_NOMBRE";
     public static final String PROP_CLAVE = "PROP_CLAVE";
-    public static final String PROP_UBICACION = "PROP_UBICACION";
+    public static final String PROP_IDENCARGADO = "PROP_IDENCARGADO";
 
-    private Integer idLaboratorio;
+
+    private BigDecimal idLaboratorio;
     private String nombre;
     private String clave;
-    private String ubicacion;
+    private String idencargado;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     public Laboratorio() {
     }
-    public Laboratorio(Integer idLaboratorio, String nombre, String clave, String ubicacion) {
+
+    public Laboratorio(BigDecimal idLaboratorio, String nombre, String clave, String idencargado) {
         this.idLaboratorio = idLaboratorio;
         this.nombre = nombre;
         this.clave = clave;
-        this.ubicacion = ubicacion;
+        this.idencargado = idencargado;
     }
 
-
+    
     /**
      * @return the idLaboratorio
      */
-    public Integer getIdLaboratorio() {
+    public BigDecimal getIdLaboratorio() {
         return idLaboratorio;
     }
 
     /**
      * @param idLaboratorio the idLaboratorio to set
      */
-    public void setIdLaboratorio(Integer idLaboratorio) {
-        java.lang.Integer oldIdLaboratorio = this.idLaboratorio;
+    public void setIdLaboratorio(BigDecimal idLaboratorio) {
+        java.math.BigDecimal oldIdLaboratorio = this.idLaboratorio;
         this.idLaboratorio = idLaboratorio;
         propertyChangeSupport.firePropertyChange(PROP_IDLABORATORIO, oldIdLaboratorio, idLaboratorio);
     }
@@ -74,19 +76,19 @@ class Laboratorio {
     }
 
     /**
-     * @return the ubicacion
+     * @return the idencargado
      */
-    public String getUbicacion() {
-        return ubicacion;
+    public String getIdencargado() {
+        return idencargado;
     }
 
     /**
-     * @param ubicacion the ubicacion to set
+     * @param idencargado the idencargado to set
      */
-    public void setUbicacion(String ubicacion) {
-        java.lang.String oldUbicacion = this.ubicacion;
-        this.ubicacion = ubicacion;
-        propertyChangeSupport.firePropertyChange(PROP_UBICACION, oldUbicacion, ubicacion);
+    public void setIdencargado(String idencargado) {
+        java.lang.String oldIdencargado = this.idencargado;
+        this.idencargado = idencargado;
+        propertyChangeSupport.firePropertyChange(PROP_IDENCARGADO, oldIdencargado, idencargado);
     }
 
 }

@@ -1,50 +1,39 @@
 package models;
 
 import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 
 class Usuario {
-
     public static final String PROP_IDUSUARIO = "PROP_IDUSUARIO";
     public static final String PROP_NOMBRE = "PROP_NOMBRE";
-    public static final String PROP_AMATERNO = "PROP_AMATERNO";
     public static final String PROP_APATERNO = "PROP_APATERNO";
+    public static final String PROP_AMATERNO = "PROP_AMATERNO";
     public static final String PROP_DIRECCION = "PROP_DIRECCION";
     public static final String PROP_TELEFONO = "PROP_TELEFONO";
 
-    private Integer idUsuario;
+
+    private BigDecimal idusuario;
     private String nombre;
-    private String aMaterno;
-    private String aPaterno;
+    private String apaterno;
+    private String amaterno;
     private String direccion;
     private String telefono;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
-    public Usuario() {
-    }
-
-    public Usuario(Integer idUsuario, String nombre, String aMaterno, String aPaterno, String direccion, String telefono) {
-        this.idUsuario = idUsuario;
-        this.nombre = nombre;
-        this.aMaterno = aMaterno;
-        this.aPaterno = aPaterno;
-        this.direccion = direccion;
-        this.telefono = telefono;
+    /**
+     * @return the idusuario
+     */
+    public BigDecimal getIdusuario() {
+        return idusuario;
     }
 
     /**
-     * @return the idUsuario
+     * @param idusuario the idusuario to set
      */
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    /**
-     * @param idUsuario the idUsuario to set
-     */
-    public void setIdUsuario(Integer idUsuario) {
-        java.lang.Integer oldIdUsuario = this.idUsuario;
-        this.idUsuario = idUsuario;
-        propertyChangeSupport.firePropertyChange(PROP_IDUSUARIO, oldIdUsuario, idUsuario);
+    public void setIdusuario(BigDecimal idusuario) {
+        java.math.BigDecimal oldIdusuario = this.idusuario;
+        this.idusuario = idusuario;
+        propertyChangeSupport.firePropertyChange(PROP_IDUSUARIO, oldIdusuario, idusuario);
     }
 
     /**
@@ -64,35 +53,35 @@ class Usuario {
     }
 
     /**
-     * @return the aMaterno
+     * @return the apaterno
      */
-    public String getaMaterno() {
-        return aMaterno;
+    public String getApaterno() {
+        return apaterno;
     }
 
     /**
-     * @param aMaterno the aMaterno to set
+     * @param apaterno the apaterno to set
      */
-    public void setaMaterno(String aMaterno) {
-        java.lang.String oldaMaterno = this.aMaterno;
-        this.aMaterno = aMaterno;
-        propertyChangeSupport.firePropertyChange(PROP_AMATERNO, oldaMaterno, aMaterno);
+    public void setApaterno(String apaterno) {
+        java.lang.String oldApaterno = this.apaterno;
+        this.apaterno = apaterno;
+        propertyChangeSupport.firePropertyChange(PROP_APATERNO, oldApaterno, apaterno);
     }
 
     /**
-     * @return the aPaterno
+     * @return the amaterno
      */
-    public String getaPaterno() {
-        return aPaterno;
+    public String getAmaterno() {
+        return amaterno;
     }
 
     /**
-     * @param aPaterno the aPaterno to set
+     * @param amaterno the amaterno to set
      */
-    public void setaPaterno(String aPaterno) {
-        java.lang.String oldaPaterno = this.aPaterno;
-        this.aPaterno = aPaterno;
-        propertyChangeSupport.firePropertyChange(PROP_APATERNO, oldaPaterno, aPaterno);
+    public void setAmaterno(String amaterno) {
+        java.lang.String oldAmaterno = this.amaterno;
+        this.amaterno = amaterno;
+        propertyChangeSupport.firePropertyChange(PROP_AMATERNO, oldAmaterno, amaterno);
     }
 
     /**
@@ -126,4 +115,7 @@ class Usuario {
         this.telefono = telefono;
         propertyChangeSupport.firePropertyChange(PROP_TELEFONO, oldTelefono, telefono);
     }
+    
+    
+
 }

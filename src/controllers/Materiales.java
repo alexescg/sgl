@@ -1,5 +1,5 @@
 package controllers;
 
-public class Materiales {
+public class Materiales extends BaseController{
     
 }
