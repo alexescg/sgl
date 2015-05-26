@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class PrestamoMaterial {
+public class PrestamoMaterial extends BaseModel{
 
     public static final String PROP_IDMATERIAL = "PROP_IDMATERIAL";
     public static final String PROP_IDPRESTAMO = "PROP_IDPRESTAMO";

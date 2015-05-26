@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  *
  * @author ALO
  */
-public class LaboratorioMaterial {
+public class LaboratorioMaterial extends BaseModel {
     public static final String PROP_IDLABORATORIO = "PROP_IDLABORATORIO";
     public static final String PROP_IDMATERIAL = "PROP_IDMATERIAL";
     

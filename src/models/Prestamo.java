@@ -3,7 +3,7 @@ package models;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 
-public class Prestamo {
+public class Prestamo extends BaseModel{
     public static final String PROP_IDPRESTAMO = "PROP_IDPRESTAMO";
     public static final String PROP_DESCRIPCION = "PROP_DESCRIPCION";
     public static final String PROP_USUARIO = "PROP_USUARIO";

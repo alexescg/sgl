@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  *
  * @author ALO
  */
-public class Devolucion {
+public class Devolucion extends BaseModel{
     
     private BigDecimal iddevolucion;
     private String status;

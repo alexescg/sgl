@@ -3,7 +3,7 @@ package models;
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
 
-public class Material {
+public class Material extends BaseModel{
     public static final String PROP_IDMATERIAL = "PROP_IDMATERIAL";
     public static final String PROP_DESCRIPCION = "PROP_DESCRIPCION";
     public static final String PROP_EXISTENCIAS = "PROP_EXISTENCIAS";
