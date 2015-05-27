@@ -3,22 +3,20 @@ package views;
 import controllers.LaboratorioMateriales;
 import controllers.Laboratorios;
 import controllers.Materiales;
-import controllers.PrestamoMateriales;
 import controllers.Prestamos;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.math.BigDecimal;
+import java.awt.BorderLayout;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import javax.swing.JOptionPane;
 import models.Laboratorio;
 import models.LaboratorioMaterial;
+import javax.swing.JFrame;
+import javax.swing.border.EmptyBorder;
 import models.Material;
 import models.Prestamo;
-import models.PrestamoMaterial;
 import utils.OracleUtils;
 
 /**
@@ -43,6 +41,15 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
      * @throws java.lang.Exception
      */
     public FrmPrestamosMaterial() throws Exception {
+           /*Creacion fondo*/
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        PanelImagen p = new PanelImagen();
+        p.setBorder(new EmptyBorder(5, 5, 5, 5));
+        p.setLayout(new BorderLayout(0, 0));
+        setContentPane(p);
+
+        
         initComponents();
         System.out.println("kldwa");
         Laboratorios.fillCombo(comboLabs, laboratorios, "nombre", Laboratorio.class);
@@ -72,7 +79,8 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         comboLabs = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Pretamos Material");
 
         jLabel3.setText("Prestamo");
 
@@ -173,6 +181,7 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
         bindingGroup.bind();
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnagregarsolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarsolicitudActionPerformed

@@ -5,6 +5,10 @@
  */
 package views;
 
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import javax.swing.border.EmptyBorder;
+
 /**
  *
  * @author Ricardo
@@ -15,6 +19,15 @@ public class Autententificacion extends javax.swing.JFrame {
      * Creates new form Autententificacion
      */
     public Autententificacion() {
+           /*Creacion fondo*/
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        PanelImagen p = new PanelImagen();
+        p.setBorder(new EmptyBorder(5, 5, 5, 5));
+        p.setLayout(new BorderLayout(0, 0));
+        setContentPane(p);
+
+        
         initComponents();
     }
 
@@ -33,7 +46,8 @@ public class Autententificacion extends javax.swing.JFrame {
         inTxtContra = new javax.swing.JTextField();
         bttnEntrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Inicio");
 
         jLabel1.setText("Usuario");
 
@@ -79,6 +93,7 @@ public class Autententificacion extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

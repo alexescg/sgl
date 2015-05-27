@@ -6,7 +6,10 @@
 package views;
 
 import controllers.Materiales;
+import java.awt.BorderLayout;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.border.EmptyBorder;
 import models.Material;
 import utils.OracleUtils;
 
@@ -15,16 +18,26 @@ import utils.OracleUtils;
  * @author Ricardo
  */
 public class BaseFrame extends javax.swing.JFrame {
+
     List<Material> materiales = (List<Material>) Materiales.select(OracleUtils.getDBConexion(), "select * from material", Material.class);
+
     /**
      * Creates new form BaseFrame
      */
     public BaseFrame() {
+        /*Creacion fondo*/
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        PanelImagen p = new PanelImagen();
+        p.setBorder(new EmptyBorder(5, 5, 5, 5));
+        p.setLayout(new BorderLayout(0, 0));
+        setContentPane(p);
+
         initComponents();
-        materiales.stream().forEach((material)->{
+        materiales.stream().forEach((material) -> {
             System.out.println("material = " + material.getIdmaterial());
         });
-        
+
     }
 
     /**
@@ -40,7 +53,8 @@ public class BaseFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Base");
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jTextField1, org.jdesktop.beansbinding.ELProperty.create("${text}"), jLabel1, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -72,6 +86,7 @@ public class BaseFrame extends javax.swing.JFrame {
         bindingGroup.bind();
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

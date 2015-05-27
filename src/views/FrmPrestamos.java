@@ -7,14 +7,14 @@ package views;
 
 import controllers.Materiales;
 import controllers.Usuarios;
-import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.awt.BorderLayout;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.EmptyBorder;
 import models.BaseModel;
 import models.Material;
 import models.Usuario;
@@ -34,6 +34,15 @@ public class FrmPrestamos extends javax.swing.JFrame {
      * @throws java.lang.Exception
      */
     public FrmPrestamos() throws Exception {
+           /*Creacion fondo*/
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        PanelImagen p = new PanelImagen();
+        p.setBorder(new EmptyBorder(5, 5, 5, 5));
+        p.setLayout(new BorderLayout(0, 0));
+        setContentPane(p);
+
+        
         initComponents();
     }
 
@@ -53,7 +62,8 @@ public class FrmPrestamos extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Prestamos");
 
         jLabel3.setText("Descripcion");
 
@@ -114,6 +124,7 @@ public class FrmPrestamos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMaterialesActionPerformed
