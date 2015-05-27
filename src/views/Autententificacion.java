@@ -7,6 +7,7 @@ package views;
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -42,7 +43,7 @@ public class Autententificacion extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        inTxtEncargado = new javax.swing.JTextField();
+        inTxtAdmini = new javax.swing.JTextField();
         inTxtContra = new javax.swing.JTextField();
         bttnEntrar = new javax.swing.JButton();
 
@@ -54,6 +55,11 @@ public class Autententificacion extends javax.swing.JFrame {
         jLabel2.setText("Contraseña");
 
         bttnEntrar.setText("Acceder");
+        bttnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttnEntrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,15 +67,13 @@ public class Autententificacion extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(86, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(34, 34, 34)
-                        .addComponent(inTxtEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inTxtContra)))
+                    .addComponent(inTxtContra, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addComponent(inTxtAdmini))
                 .addGap(58, 58, 58))
             .addGroup(layout.createSequentialGroup()
                 .addGap(137, 137, 137)
@@ -82,7 +86,7 @@ public class Autententificacion extends javax.swing.JFrame {
                 .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(inTxtEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inTxtAdmini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -95,6 +99,16 @@ public class Autententificacion extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bttnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnEntrarActionPerformed
+        if ((inTxtAdmini.getText().equals("admin")&& inTxtContra.getText().equals("Administrador1234"))){
+                MenuPrincipal menuAdd = new MenuPrincipal();
+                menuAdd.setVisible(true);
+                this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "El usuario o la contraseña son incorrectos");
+        }
+    }//GEN-LAST:event_bttnEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,8 +147,8 @@ public class Autententificacion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bttnEntrar;
+    private javax.swing.JTextField inTxtAdmini;
     private javax.swing.JTextField inTxtContra;
-    private javax.swing.JTextField inTxtEncargado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

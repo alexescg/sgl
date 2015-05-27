@@ -148,6 +148,13 @@ public class FrmPrestamos extends javax.swing.JFrame {
                             BaseModel.CURRENT_TIMESTAMP));
                 
                 JOptionPane.showMessageDialog(rootPane, "Añadido exitosamente!");
+                  try {
+            // TODO add your handling code here:
+            FrmPrestamosMaterial prestamosAdd = new FrmPrestamosMaterial();
+            prestamosAdd.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
             } else{
             JOptionPane.showMessageDialog(rootPane, "Usuario no existente");
             }
