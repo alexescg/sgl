@@ -6,7 +6,10 @@
 package views;
 
 import controllers.Materiales;
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.EmptyBorder;
 import models.BaseModel;
 import models.Material;
 import utils.OracleUtils;
@@ -22,6 +25,15 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
      * Creates new form FrmProveedores
      */
     public FrmAgregarUsuario() {
+           /*Creacion fondo*/
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        PanelImagen p = new PanelImagen();
+        p.setBorder(new EmptyBorder(5, 5, 5, 5));
+        p.setLayout(new BorderLayout(0, 0));
+        setContentPane(p);
+
+        
         initComponents();
     }
 
@@ -48,7 +60,8 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtAmaterno = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agregar Usuario");
 
         jLabel1.setText("Matricula");
 
@@ -150,6 +163,7 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMaterialesActionPerformed

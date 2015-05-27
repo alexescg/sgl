@@ -5,10 +5,11 @@
  */
 package views;
 
-import controllers.BaseController;
 import controllers.Materiales;
-import java.math.BigDecimal;
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.EmptyBorder;
 import models.BaseModel;
 import models.Material;
 import utils.OracleUtils;
@@ -24,6 +25,15 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
      * Creates new form FrmProveedores
      */
     public FrmAgregarMateriales() {
+           /*Creacion fondo*/
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 450, 300);
+        PanelImagen p = new PanelImagen();
+        p.setBorder(new EmptyBorder(5, 5, 5, 5));
+        p.setLayout(new BorderLayout(0, 0));
+        setContentPane(p);
+
+        
         initComponents();
     }
 
@@ -42,7 +52,8 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
         txtDescripcion = new javax.swing.JTextField();
         btnAgregarMateriales = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agregar Materiales");
 
         jLabel1.setText("Clave");
 
@@ -94,6 +105,7 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMaterialesActionPerformed
