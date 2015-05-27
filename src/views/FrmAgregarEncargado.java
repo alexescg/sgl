@@ -15,13 +15,13 @@ import utils.OracleUtils;
  *
  * @author ALO
  */
-public class FrmAgregarUsuario extends javax.swing.JFrame {
+public class FrmAgregarEncargado extends javax.swing.JFrame {
 
 
     /**
      * Creates new form FrmProveedores
      */
-    public FrmAgregarUsuario() {
+    public FrmAgregarEncargado() {
         initComponents();
     }
 
@@ -37,20 +37,18 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtMatricula = new javax.swing.JTextField();
+        txtEncargado = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApaterno = new javax.swing.JTextField();
         btnAgregarMateriales = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtAmaterno = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Matricula");
+        jLabel1.setText("Clave");
 
         jLabel2.setText("Nombre");
 
@@ -64,8 +62,6 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
         });
 
         jLabel4.setText("Direccion");
-
-        jLabel5.setText("Telefono");
 
         jLabel6.setText("Apellido Materno");
 
@@ -88,29 +84,22 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(68, 68, 68)
-                            .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(68, 68, 68)
                         .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtAmaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(24, 24, 24))))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtAmaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,7 +109,7 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtEncargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,11 +128,7 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3)))
+                        .addGap(59, 59, 59)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(btnAgregarMateriales)
                 .addGap(39, 39, 39))
@@ -153,36 +138,32 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMaterialesActionPerformed
-        if ((Material.isNumeric(txtMatricula.getText())) 
+        if ((Material.isNumeric(txtEncargado.getText())) 
                 && (Material.isValidString(txtNombre.getText())) 
                 && (Material.isValidString(txtApaterno.getText()))
                 && (Material.isValidString(txtAmaterno.getText()))
-                && (Material.isValidString(txtDireccion.getText()))
-                && (Material.isNumeric(txtTelefono.getText()))) {
+                && (Material.isValidString(txtDireccion.getText()))) {
 
-            String matricula = txtMatricula.getText();
+            String matricula = txtEncargado.getText();
             String nombre = txtNombre.getText();
             String apaterno = txtApaterno.getText();
             String amaterno = txtAmaterno.getText();
-            String direccion = txtDireccion.getText();
-            String telefono = txtTelefono.getText();
+            String direccion = txtEncargado.getText();
             
             Materiales.executeQuery(OracleUtils.getDBConexion(), 
-                    String.format("insert into usuario values(%s, '%s', '%s', '%s', '%s', %s)", 
+                    String.format("insert into encargados values(%s, '%s', '%s', '%s', '%s')", 
                             matricula, 
                             nombre, 
                             apaterno,
                             amaterno,
-                            direccion,
-                            telefono));
+                            direccion));
             JOptionPane.showMessageDialog(rootPane, "Usuario agregado con exito!");
            
-           txtMatricula.setText(BaseModel.VACIO);
+           txtEncargado.setText(BaseModel.VACIO);
            txtNombre.setText(BaseModel.VACIO);
            txtApaterno.setText(BaseModel.VACIO);
            txtAmaterno.setText(BaseModel.VACIO);
            txtDireccion.setText(BaseModel.VACIO);
-           txtTelefono.setText(BaseModel.VACIO);
             
         } else {
             JOptionPane.showMessageDialog(rootPane, "Valores no validos.");
@@ -219,7 +200,7 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmAgregarUsuario().setVisible(true);
+                new FrmAgregarEncargado().setVisible(true);
             }
         });
     }
@@ -230,13 +211,11 @@ public class FrmAgregarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txtAmaterno;
     private javax.swing.JTextField txtApaterno;
     private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtMatricula;
+    private javax.swing.JTextField txtEncargado;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

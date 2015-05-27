@@ -1,6 +1,7 @@
 package models;
 
 import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 
 /**
  *
@@ -13,7 +14,7 @@ public class Encargado extends BaseModel{
     public static final String PROP_AMATERNO = "PROP_AMATERNO";
     public static final String PROP_DIRECCION = "PROP_DIRECCION";
 
-    private String idencargado;
+    private BigDecimal idencargado;
     
     private String nombre;
     
@@ -23,30 +24,19 @@ public class Encargado extends BaseModel{
     
     private String direccion;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
-    
-    public Encargado() {
-    }
-
-    public Encargado(String idencargado, String nombre, String apaterno, String amaterno, String direccion) {
-        this.idencargado = idencargado;
-        this.nombre = nombre;
-        this.apaterno = apaterno;
-        this.amaterno = amaterno;
-        this.direccion = direccion;
-    }
 
     /**
      * @return the idencargado
      */
-    public String getIdencargado() {
+    public BigDecimal getIdencargado() {
         return idencargado;
     }
 
     /**
      * @param idencargado the idencargado to set
      */
-    public void setIdencargado(String idencargado) {
-        java.lang.String oldIdencargado = this.idencargado;
+    public void setIdencargado(BigDecimal idencargado) {
+        java.math.BigDecimal oldIdencargado = this.idencargado;
         this.idencargado = idencargado;
         propertyChangeSupport.firePropertyChange(PROP_IDENCARGADO, oldIdencargado, idencargado);
     }
@@ -114,7 +104,7 @@ public class Encargado extends BaseModel{
         this.direccion = direccion;
         propertyChangeSupport.firePropertyChange(PROP_DIRECCION, oldDireccion, direccion);
     }
-    
+
     
     
 }

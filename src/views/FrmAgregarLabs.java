@@ -5,11 +5,16 @@
  */
 package views;
 
-import controllers.BaseController;
+import controllers.Encargados;
 import controllers.Materiales;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import models.BaseModel;
+import models.Encargado;
 import models.Material;
 import utils.OracleUtils;
 
@@ -17,14 +22,20 @@ import utils.OracleUtils;
  *
  * @author ALO
  */
-public class FrmAgregarMateriales extends javax.swing.JFrame {
+public class FrmAgregarLabs extends javax.swing.JFrame {
 
-
+    List<Encargado> encargados = (List<Encargado>) Encargados
+            .select(OracleUtils.getDBConexion(),
+                    "select * from encargados",
+                    Encargado.class);
     /**
      * Creates new form FrmProveedores
+     * @throws java.lang.Exception
      */
-    public FrmAgregarMateriales() {
+    public FrmAgregarLabs() throws Exception {
         initComponents();
+        Encargados.fillCombo(comboEncargados, encargados, "nombre", Encargado.class);
+        
     }
 
     /**
@@ -36,21 +47,19 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
         txtClave = new javax.swing.JTextField();
-        txtDescripcion = new javax.swing.JTextField();
-        txtExistencia = new javax.swing.JTextField();
         btnAgregarMateriales = new javax.swing.JButton();
+        comboEncargados = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Clave");
+        jLabel2.setText("Encargado");
 
-        jLabel2.setText("Descripcion");
-
-        jLabel3.setText("Existencia");
+        jLabel3.setText("Clave");
 
         btnAgregarMateriales.setText("Agregar");
         btnAgregarMateriales.addActionListener(new java.awt.event.ActionListener() {
@@ -59,48 +68,49 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
             }
         });
 
+        comboEncargados.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel4.setText("Nombre");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(68, 68, 68)
-                                .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(116, 116, 116)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(comboEncargados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(btnAgregarMateriales)))
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtExistencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboEncargados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
                 .addComponent(btnAgregarMateriales)
                 .addContainerGap())
         );
@@ -110,27 +120,27 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
 
     private void btnAgregarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMaterialesActionPerformed
         if ((Material.isNumeric(txtClave.getText())) 
-                && (Material.isValidString(txtDescripcion.getText())) 
-                && (Material.isNumeric(txtExistencia.getText()))) {
+                && (Material.isValidString(txtNombre.getText()))) {
 
+            Random r = new Random();
+            String id = String.valueOf(r.nextInt(100));
             String clave = txtClave.getText();
-            String descripcion = txtDescripcion.getText();
-            String existencias = txtExistencia.getText();
+            String nombre = txtNombre.getText();
+            BigDecimal encargadoId = encargados.get(comboEncargados.getSelectedIndex()).getIdencargado();
             
             Materiales.executeQuery(OracleUtils.getDBConexion(), 
-                    String.format("insert into material values(%s, '%s', %s)", 
+                    String.format("insert into laboratorio values(%s, '%s', %s, %s)", 
+                            id, 
+                            nombre,
                             clave, 
-                            descripcion, 
-                            existencias));
+                            encargadoId));
                         JOptionPane.showMessageDialog(rootPane, "Agregado exitosamente.");
                         txtClave.setText(BaseModel.VACIO);
-                        txtDescripcion.setText(BaseModel.VACIO);
-                        txtExistencia.setText(BaseModel.VACIO);
+                        txtNombre.setText(BaseModel.VACIO);
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "Valores no validos.");
         }
-        System.out.println("dwadaw");
 
     }//GEN-LAST:event_btnAgregarMaterialesActionPerformed
   /**
@@ -163,18 +173,22 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmAgregarMateriales().setVisible(true);
+                try {
+                    new FrmAgregarLabs().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(FrmAgregarLabs.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarMateriales;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox comboEncargados;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtClave;
-    private javax.swing.JTextField txtDescripcion;
-    private javax.swing.JTextField txtExistencia;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
