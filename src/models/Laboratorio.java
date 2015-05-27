@@ -10,37 +10,26 @@ public class Laboratorio extends BaseModel{
     public static final String PROP_IDENCARGADO = "PROP_IDENCARGADO";
 
 
-    private BigDecimal idLaboratorio;
+    private BigDecimal idlaboratorio;
     private String nombre;
     private String clave;
     private String idencargado;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
-    public Laboratorio() {
-    }
-
-    public Laboratorio(BigDecimal idLaboratorio, String nombre, String clave, String idencargado) {
-        this.idLaboratorio = idLaboratorio;
-        this.nombre = nombre;
-        this.clave = clave;
-        this.idencargado = idencargado;
-    }
-
-    
     /**
-     * @return the idLaboratorio
+     * @return the idlaboratorio
      */
-    public BigDecimal getIdLaboratorio() {
-        return idLaboratorio;
+    public BigDecimal getIdlaboratorio() {
+        return idlaboratorio;
     }
 
     /**
-     * @param idLaboratorio the idLaboratorio to set
+     * @param idlaboratorio the idlaboratorio to set
      */
-    public void setIdLaboratorio(BigDecimal idLaboratorio) {
-        java.math.BigDecimal oldIdLaboratorio = this.idLaboratorio;
-        this.idLaboratorio = idLaboratorio;
-        propertyChangeSupport.firePropertyChange(PROP_IDLABORATORIO, oldIdLaboratorio, idLaboratorio);
+    public void setIdlaboratorio(BigDecimal idlaboratorio) {
+        java.math.BigDecimal oldIdlaboratorio = this.idlaboratorio;
+        this.idlaboratorio = idlaboratorio;
+        propertyChangeSupport.firePropertyChange(PROP_IDLABORATORIO, oldIdlaboratorio, idlaboratorio);
     }
 
     /**
@@ -90,5 +79,4 @@ public class Laboratorio extends BaseModel{
         this.idencargado = idencargado;
         propertyChangeSupport.firePropertyChange(PROP_IDENCARGADO, oldIdencargado, idencargado);
     }
-
 }

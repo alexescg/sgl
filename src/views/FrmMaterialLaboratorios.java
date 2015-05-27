@@ -23,8 +23,8 @@ import utils.OracleUtils;
 public class FrmMaterialLaboratorios extends javax.swing.JFrame {
 
     Random r;
-    List<Laboratorio> usuarios = (List<Laboratorio>) Usuarios.select(OracleUtils.getDBConexion(), "select idusuario, nombre from laboratorio", Laboratorio.class);
-    List<Material> materiales = (List<Material>) Materiales.select(OracleUtils.getDBConexion(), "select idmaterial, descripcion, cantidad from material", Material.class);
+    List<Laboratorio> laboratorios = (List<Laboratorio>) Laboratorios.select(OracleUtils.getDBConexion(), "select idlaboratorio, nombre from laboratorio", Laboratorio.class);
+    List<Material> materiales = (List<Material>) Materiales.select(OracleUtils.getDBConexion(), "select idmaterial, descripcion from material", Material.class);
     /**
      * Creates new form FrmProveedores
      *
@@ -32,8 +32,8 @@ public class FrmMaterialLaboratorios extends javax.swing.JFrame {
      */
     public FrmMaterialLaboratorios() throws Exception {
         initComponents();
-        Laboratorios.fillCombo(comboUsuarios, usuarios, "nombre", Laboratorio.class);
-        Materiales.fillCombo(comboLaboratorios, materiales, "descripcion", Material.class);
+        Laboratorios.fillCombo(comboLaboratorios, laboratorios, "nombre", Laboratorio.class);
+        Materiales.fillCombo(comboMaterial, materiales, "descripcion", Material.class);
     }
 
     /**
@@ -48,7 +48,7 @@ public class FrmMaterialLaboratorios extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         btnAgregarMateriales = new javax.swing.JButton();
-        comboUsuarios = new javax.swing.JComboBox();
+        comboMaterial = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblCantidad = new javax.swing.JLabel();
@@ -67,7 +67,7 @@ public class FrmMaterialLaboratorios extends javax.swing.JFrame {
             }
         });
 
-        comboUsuarios.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboMaterial.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setText("Seleccion de Material");
 
@@ -108,7 +108,7 @@ public class FrmMaterialLaboratorios extends javax.swing.JFrame {
                                 .addComponent(jLabel4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboUsuarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboMaterial, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtCantidad))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +128,7 @@ public class FrmMaterialLaboratorios extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(comboLaboratorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -153,13 +153,13 @@ public class FrmMaterialLaboratorios extends javax.swing.JFrame {
 
             
             BigDecimal idMaterial = materiales.get(comboLaboratorios.getSelectedIndex()).getIdmaterial();
-            BigDecimal idUsuario = usuarios.get(comboUsuarios.getSelectedIndex()).getIdLaboratorio();
+            BigDecimal idLab = laboratorios.get(comboMaterial.getSelectedIndex()).getIdlaboratorio();
             String cantidad = txtCantidad.getText();
             
             Materiales.executeQuery(OracleUtils.getDBConexion(),
-                    String.format("insert into prestamo_material values(%s, '%s', %s)",
+                    String.format("insert into laboratorio_material values(%s, '%s', %s)",
                             idMaterial,
-                            idUsuario,
+                            idLab,
                             cantidad));
             JOptionPane.showMessageDialog(rootPane, "Agregado exitosamente.");
             txtCantidad.setText(BaseModel.VACIO);
@@ -213,7 +213,7 @@ public class FrmMaterialLaboratorios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarMateriales;
     private javax.swing.JComboBox comboLaboratorios;
-    private javax.swing.JComboBox comboUsuarios;
+    private javax.swing.JComboBox comboMaterial;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
