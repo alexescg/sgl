@@ -2,26 +2,20 @@ package models;
 
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 public class Prestamo extends BaseModel{
     public static final String PROP_IDPRESTAMO = "PROP_IDPRESTAMO";
     public static final String PROP_DESCRIPCION = "PROP_DESCRIPCION";
     public static final String PROP_USUARIO = "PROP_USUARIO";
+    public static final String PROP_FECHA = "PROP_FECHA";
 
 
     private BigDecimal idPrestamo;
     private String descripcion;
     private BigDecimal usuario;
+    private Timestamp fecha;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
-
-    public Prestamo() {
-    }
-
-    public Prestamo(BigDecimal idPrestamo, String descripcion, BigDecimal usuario) {
-        this.idPrestamo = idPrestamo;
-        this.descripcion = descripcion;
-        this.usuario = usuario;
-    }
 
     /**
      * @return the idPrestamo
@@ -70,6 +64,21 @@ public class Prestamo extends BaseModel{
         this.usuario = usuario;
         propertyChangeSupport.firePropertyChange(PROP_USUARIO, oldUsuario, usuario);
     }
-    
-    
+
+    /**
+     * @return the fecha
+     */
+    public Timestamp getFecha() {
+        return fecha;
+    }
+
+    /**
+     * @param fecha the fecha to set
+     */
+    public void setFecha(Timestamp fecha) {
+        java.sql.Timestamp oldFecha = this.fecha;
+        this.fecha = fecha;
+        propertyChangeSupport.firePropertyChange(PROP_FECHA, oldFecha, fecha);
+    }
+     
 }

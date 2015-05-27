@@ -2,7 +2,6 @@ package views;
 
 import controllers.Laboratorios;
 import controllers.Materiales;
-import controllers.Usuarios;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Random;
@@ -13,7 +12,6 @@ import models.BaseModel;
 import models.Laboratorio;
 import models.LaboratorioMaterial;
 import models.Material;
-import models.Usuario;
 import utils.OracleUtils;
 
 /**
@@ -25,6 +23,7 @@ public class FrmMaterialLaboratorios extends javax.swing.JFrame {
     Random r;
     List<Laboratorio> laboratorios = (List<Laboratorio>) Laboratorios.select(OracleUtils.getDBConexion(), "select idlaboratorio, nombre from laboratorio", Laboratorio.class);
     List<Material> materiales = (List<Material>) Materiales.select(OracleUtils.getDBConexion(), "select idmaterial, descripcion from material", Material.class);
+    
     /**
      * Creates new form FrmProveedores
      *

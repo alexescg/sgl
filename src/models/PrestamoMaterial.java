@@ -2,66 +2,64 @@ package models;
 
 import java.beans.PropertyChangeSupport;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.util.Date;
 
 public class PrestamoMaterial extends BaseModel{
-
-    public static final String PROP_IDMATERIAL = "PROP_IDMATERIAL";
     public static final String PROP_IDPRESTAMO = "PROP_IDPRESTAMO";
-    public static final String PROP_FECHAPRESTAMO = "PROP_FECHAPRESTAMO";
+    public static final String PROP_IDMATERIAL = "PROP_IDMATERIAL";
+    public static final String PROP_IDLABORATORIO = "PROP_IDLABORATORIO";
 
-    private BigDecimal idPrestamo;
-    private BigDecimal idMaterial;
-    private Timestamp fechaPrestamo;
+
+    private BigDecimal idprestamo;
+    private BigDecimal idmaterial;
+    private BigDecimal idlaboratorio;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
-     * @return the idMaterial
+     * @return the idprestamo
      */
-    public BigDecimal getIdMaterial() {
-        return idMaterial;
+    public BigDecimal getIdprestamo() {
+        return idprestamo;
     }
 
     /**
-     * @param idMaterial the idMaterial to set
+     * @param idprestamo the idprestamo to set
      */
-    public void setIdMaterial(BigDecimal idMaterial) {
-        java.math.BigDecimal oldIdMaterial = this.idMaterial;
-        this.idMaterial = idMaterial;
-        propertyChangeSupport.firePropertyChange(PROP_IDMATERIAL, oldIdMaterial, idMaterial);
+    public void setIdprestamo(BigDecimal idprestamo) {
+        java.math.BigDecimal oldIdprestamo = this.idprestamo;
+        this.idprestamo = idprestamo;
+        propertyChangeSupport.firePropertyChange(PROP_IDPRESTAMO, oldIdprestamo, idprestamo);
     }
 
     /**
-     * @return the idPrestamo
+     * @return the idmaterial
      */
-    public BigDecimal getIdPrestamo() {
-        return idPrestamo;
+    public BigDecimal getIdmaterial() {
+        return idmaterial;
     }
 
     /**
-     * @param idPrestamo the idPrestamo to set
+     * @param idmaterial the idmaterial to set
      */
-    public void setIdPrestamo(BigDecimal idPrestamo) {
-        java.math.BigDecimal oldIdPrestamo = this.idPrestamo;
-        this.idPrestamo = idPrestamo;
-        propertyChangeSupport.firePropertyChange(PROP_IDPRESTAMO, oldIdPrestamo, idPrestamo);
+    public void setIdmaterial(BigDecimal idmaterial) {
+        java.math.BigDecimal oldIdmaterial = this.idmaterial;
+        this.idmaterial = idmaterial;
+        propertyChangeSupport.firePropertyChange(PROP_IDMATERIAL, oldIdmaterial, idmaterial);
     }
 
     /**
-     * @return the fechaPrestamo
+     * @return the idlaboratorio
      */
-    public Timestamp getFechaPrestamo() {
-        return fechaPrestamo;
+    public BigDecimal getIdlaboratorio() {
+        return idlaboratorio;
     }
 
     /**
-     * @param fechaPrestamo the fechaPrestamo to set
+     * @param idlaboratorio the idlaboratorio to set
      */
-    public void setFechaPrestamo(Timestamp fechaPrestamo) {
-        java.sql.Timestamp oldFechaPrestamo = this.fechaPrestamo;
-        this.fechaPrestamo = fechaPrestamo;
-        propertyChangeSupport.firePropertyChange(PROP_FECHAPRESTAMO, oldFechaPrestamo, fechaPrestamo);
+    public void setIdlaboratorio(BigDecimal idlaboratorio) {
+        java.math.BigDecimal oldIdlaboratorio = this.idlaboratorio;
+        this.idlaboratorio = idlaboratorio;
+        propertyChangeSupport.firePropertyChange(PROP_IDLABORATORIO, oldIdlaboratorio, idlaboratorio);
     }
 
 }

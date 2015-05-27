@@ -8,6 +8,8 @@ package views;
 import controllers.Materiales;
 import controllers.Usuarios;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
@@ -121,8 +123,22 @@ public class FrmPrestamos extends javax.swing.JFrame {
                 r = new Random();
                 Integer id = r.nextInt(10000);
                 String descripcion = txtDescripcion.getText();
+                String usuario = txtUsuario.getText();
                 
+                System.out.println("id = " + id);
+                System.out.println("descripcion = " + descripcion);
+                System.out.println("usuario = " + usuario);
                 
+                Materiales.executeQuery(OracleUtils.getDBConexion(),
+                    String.format("insert into prestamo values(%s, '%s', %s, %s)",
+                            id,
+                            descripcion,
+                            usuario,
+                            BaseModel.CURRENT_TIMESTAMP));
+                
+                JOptionPane.showMessageDialog(rootPane, "Añadido exitosamente!");
+            } else{
+            JOptionPane.showMessageDialog(rootPane, "Usuario no existente");
             }
 
 ////BigDecimal idUsuario = usuarios.get(comboUsuarios.getSelectedIndex()).getIdusuario();
@@ -174,7 +190,7 @@ public class FrmPrestamos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             try { 
-               new FrmPrestamosMaterial().setVisible(true);
+               new FrmPrestamos().setVisible(true);
             } catch (Exception ex) {
                 Logger.getLogger(FrmPrestamosMaterial.class.getName()).log(Level.SEVERE, null, ex);
             }
