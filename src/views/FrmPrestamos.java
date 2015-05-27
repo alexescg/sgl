@@ -5,25 +5,33 @@
  */
 package views;
 
-import controllers.BaseController;
 import controllers.Materiales;
+import controllers.Usuarios;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import models.BaseModel;
 import models.Material;
+import models.Usuario;
 import utils.OracleUtils;
 
 /**
  *
  * @author ALO
  */
-public class FrmAgregarMateriales extends javax.swing.JFrame {
+public class FrmPrestamos extends javax.swing.JFrame {
 
-
+    Random r;
+    List<Usuario> usuarios = (List<Usuario>) Usuarios.select(OracleUtils.getDBConexion(), "select idusuario, nombre from usuario", Usuario.class);
     /**
      * Creates new form FrmProveedores
+     *
+     * @throws java.lang.Exception
      */
-    public FrmAgregarMateriales() {
+    public FrmPrestamos() throws Exception {
         initComponents();
     }
 
@@ -36,22 +44,31 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
+        btnAgregarMateriales = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtClave = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
-        btnAgregarMateriales = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Clave");
-
-        jLabel2.setText("Descripcion");
+        jLabel3.setText("Descripcion");
 
         btnAgregarMateriales.setText("Agregar");
         btnAgregarMateriales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarMaterialesActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Solicitud de Material");
+
+        jLabel2.setText("Usuario");
+
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsuarioActionPerformed(evt);
             }
         });
 
@@ -62,33 +79,34 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(68, 68, 68)
-                                .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
-                        .addComponent(btnAgregarMateriales)))
-                .addContainerGap(184, Short.MAX_VALUE))
+                        .addComponent(btnAgregarMateriales))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel2)
+                        .addGap(28, 28, 28)
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(103, 103, 103)
                 .addComponent(btnAgregarMateriales)
                 .addContainerGap())
         );
@@ -97,27 +115,36 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMaterialesActionPerformed
-        if ((Material.isNumeric(txtClave.getText())) 
-                && (Material.isValidString(txtDescripcion.getText()))) {
-
-            String clave = txtClave.getText();
-            String descripcion = txtDescripcion.getText();
+        if (Material.isNumeric(txtUsuario.getText())){
+            if(usuarios.stream().anyMatch(usuario -> ("" + usuario.getIdusuario()).equals(txtUsuario.getText()))){
             
-            Materiales.executeQuery(OracleUtils.getDBConexion(), 
-                    String.format("insert into material values(%s, '%s')", 
-                            clave, 
-                            descripcion 
-                            ));
-                        JOptionPane.showMessageDialog(rootPane, "Agregado exitosamente.");
-                        txtClave.setText(BaseModel.VACIO);
-                        txtDescripcion.setText(BaseModel.VACIO);
+                r = new Random();
+                Integer id = r.nextInt(10000);
+                String descripcion = txtDescripcion.getText();
+                
+                
+            }
+
+////BigDecimal idUsuario = usuarios.get(comboUsuarios.getSelectedIndex()).getIdusuario();
+//            
+//            Materiales.executeQuery(OracleUtils.getDBConexion(),
+//                    String.format("insert into prestamo_material values(%s, '%s', %s)",
+//                            id,
+//                            descripcion,
+//                            ""));
+//            JOptionPane.showMessageDialog(rootPane, "Agregado exitosamente.");
+//            txtDescripcion.setText(BaseModel.VACIO);
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "Valores no validos.");
         }
 
     }//GEN-LAST:event_btnAgregarMaterialesActionPerformed
-  /**
+
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioActionPerformed
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -145,9 +172,11 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmAgregarMateriales().setVisible(true);
+        java.awt.EventQueue.invokeLater(() -> {
+            try { 
+               new FrmPrestamosMaterial().setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(FrmPrestamosMaterial.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
@@ -156,7 +185,8 @@ public class FrmAgregarMateriales extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarMateriales;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField txtClave;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
