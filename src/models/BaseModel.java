@@ -7,6 +7,7 @@ package models;
 public class BaseModel {
     public static final String VACIO = "";
     public static final String CURRENT_TIMESTAMP = "CURRENT_TIMESTAMP";
+    public static final String COMPLETADO = "COMPLETADO";
     
     /**
      * Metodo para checar si algun valor es numerico.

@@ -14,9 +14,12 @@ import java.util.stream.Collectors;
 import models.Laboratorio;
 import models.LaboratorioMaterial;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
+import models.BaseModel;
 import models.Material;
 import models.Prestamo;
+import models.PrestamoMaterial;
 import utils.OracleUtils;
 
 /**
@@ -29,7 +32,7 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
     List<Prestamo> prestamos = (List<Prestamo>) Prestamos.select(OracleUtils.getDBConexion(), "select * from prestamo", Prestamo.class);
     List<Material> materiales = (List<Material>) Materiales.select(OracleUtils.getDBConexion(), "select * from material", Material.class);
     List<Laboratorio> laboratorios = (List<Laboratorio>) Laboratorios.select(OracleUtils.getDBConexion(), "select * from laboratorio", Laboratorio.class);
-    List<LaboratorioMaterial> labmat = (List<LaboratorioMaterial>) LaboratorioMateriales.select(OracleUtils.getDBConexion(), "select * from Prestamo_Material", LaboratorioMaterial.class);
+    List<LaboratorioMaterial> labmat = (List<LaboratorioMaterial>) LaboratorioMateriales.select(OracleUtils.getDBConexion(), "select * from laboratorio_material", LaboratorioMaterial.class);
     
     String material;
     String laboratorio;
@@ -51,11 +54,9 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
 
         
         initComponents();
-        System.out.println("kldwa");
         Laboratorios.fillCombo(comboLabs, laboratorios, "nombre", Laboratorio.class);
         Materiales.fillCombo(comboMateriales, materiales, "descripcion", Material.class);
         Prestamos.fillCombo(comboPrestamos, prestamos, "descripcion", Prestamo.class);
-        System.out.println(labmat.stream().collect(Collectors.toList()));
                 }
 
     /**
@@ -69,7 +70,7 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jLabel3 = new javax.swing.JLabel();
-        btnagregarsolicitud = new javax.swing.JButton();
+        btnChecar = new javax.swing.JButton();
         comboPrestamos = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -78,16 +79,17 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
         comboMateriales = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         comboLabs = new javax.swing.JComboBox();
+        btnAgregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pretamos Material");
 
         jLabel3.setText("Prestamo");
 
-        btnagregarsolicitud.setText("Checar");
-        btnagregarsolicitud.addActionListener(new java.awt.event.ActionListener() {
+        btnChecar.setText("Checar");
+        btnChecar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnagregarsolicitudActionPerformed(evt);
+                btnChecarActionPerformed(evt);
             }
         });
 
@@ -118,6 +120,13 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
 
         comboLabs.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,10 +137,15 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(btnAgregar)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -141,16 +155,15 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel4)
-                                    .addComponent(btnagregarsolicitud))
+                                    .addComponent(btnChecar))
                                 .addGap(18, 18, 18)
-                                .addComponent(lblCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(21, 21, 21))
+                                .addComponent(lblCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel5)
                         .addGap(71, 71, 71)
                         .addComponent(comboLabs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +187,9 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnagregarsolicitud)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnChecar)
+                            .addComponent(btnAgregar))))
                 .addGap(20, 20, 20))
         );
 
@@ -184,34 +199,24 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnagregarsolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarsolicitudActionPerformed
-            BigDecimal idPrestamo = prestamos.get(comboPrestamos.getSelectedIndex()).getIdprestamo();
-            BigDecimal idLaboratorio = labmat.get(comboLabs.getSelectedIndex()).getIdlaboratorio();
-            BigDecimal idMaterial = labmat.get(comboMateriales.getSelectedIndex()).getIdmaterial();
+    private void btnChecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChecarActionPerformed
+            BigDecimal idLaboratorio = laboratorios.get(comboLabs.getSelectedIndex()).getIdlaboratorio();
+            BigDecimal idMaterial = materiales.get(comboMateriales.getSelectedIndex()).getIdmaterial();
             
-//            prestMat.stream().forEach((labmaterial) -> {
-//                
-//                if ((labmaterial.getIdlaboratorio().equals(comboLabs.getSelectedItem()))
-//                        && ((labmaterial.getIdmaterial().equals(comboMateriales.getSelectedItem())))) {
-//                    lblCantidad.setText("" + labmaterial.getExistencia());
-//                }
-//                System.out.println("labmaterial = " + labmaterial);
-//                
-//            });
+            labmat.stream().forEach((labmaterial) -> {
+                
+                if ((labmaterial.getIdlaboratorio().equals(idLaboratorio))
+                        && ((labmaterial.getIdmaterial().equals(idMaterial)))) {
+                    lblCantidad.setText("" + labmaterial.getExistencia());
+                } 
+            });
             
-            
-//            Materiales.executeQuery(OracleUtils.getDBConexion(),
-//                    String.format("insert into laboratorio_material values(%s, %s, %s)",
-//                            idPrestamo,
-//                            idLaboratorio,
-//                            idMaterial));
-//            JOptionPane.showMessageDialog(rootPane, "Agregado exitosamente.");
+            if (lblCantidad.getText().equals("")) {
+                JOptionPane.showMessageDialog(rootPane, "Favor de confirmar primero la canttidad del material y su ubicacion");
+        }
 
-//        } else {
-//            JOptionPane.showMessageDialog(rootPane, "Valores no validos.");
-//}
 
-    }//GEN-LAST:event_btnagregarsolicitudActionPerformed
+    }//GEN-LAST:event_btnChecarActionPerformed
 
     private void comboMaterialesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboMaterialesItemStateChanged
 //        prestMat.stream().forEach((labmateria) -> {
@@ -224,8 +229,32 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
     }//GEN-LAST:event_comboMaterialesItemStateChanged
 
     private void comboMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMaterialesActionPerformed
-        System.out.println("daw = ");// TODO add your handling code here:
+
     }//GEN-LAST:event_comboMaterialesActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+            BigDecimal idPrestamo = prestamos.get(comboPrestamos.getSelectedIndex()).getIdprestamo();
+            System.out.println("idPrestamo = " + idPrestamo);
+            BigDecimal idLaboratorio = laboratorios.get(comboLabs.getSelectedIndex()).getIdlaboratorio();
+            System.out.println("idLaboratorio = " + idLaboratorio);
+            BigDecimal idMaterial = materiales.get(comboMateriales.getSelectedIndex()).getIdmaterial();
+        System.out.println("idMaterial = " + idMaterial);
+            
+        
+        if (PrestamoMaterial.isNumeric(lblCantidad.getText()) && Integer.parseInt(lblCantidad.getText()) > 0)  {
+            
+                    Materiales.executeQuery(OracleUtils.getDBConexion(),
+                    String.format("insert into prestamo_material values(%s, %s, %s)",
+                            idPrestamo,
+                            idMaterial,
+                            idLaboratorio));
+            JOptionPane.showMessageDialog(rootPane, "Agregado exitosamente.");
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No hay suficiente.");
+}
+
+    }//GEN-LAST:event_btnAgregarActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -264,7 +293,8 @@ public class FrmPrestamosMaterial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnagregarsolicitud;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnChecar;
     private javax.swing.JComboBox comboLabs;
     private javax.swing.JComboBox comboMateriales;
     private javax.swing.JComboBox comboPrestamos;
