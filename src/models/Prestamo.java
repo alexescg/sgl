@@ -7,30 +7,30 @@ import java.sql.Timestamp;
 public class Prestamo extends BaseModel{
     public static final String PROP_IDPRESTAMO = "PROP_IDPRESTAMO";
     public static final String PROP_DESCRIPCION = "PROP_DESCRIPCION";
-    public static final String PROP_USUARIO = "PROP_USUARIO";
+    public static final String PROP_IDUSUARIO = "PROP_IDUSUARIO";
     public static final String PROP_FECHA = "PROP_FECHA";
+    
 
-
-    private BigDecimal idPrestamo;
+    private BigDecimal idprestamo;
     private String descripcion;
-    private BigDecimal usuario;
+    private BigDecimal idusuario;
     private Timestamp fecha;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
-     * @return the idPrestamo
+     * @return the idprestamo
      */
-    public BigDecimal getIdPrestamo() {
-        return idPrestamo;
+    public BigDecimal getIdprestamo() {
+        return idprestamo;
     }
 
     /**
-     * @param idPrestamo the idPrestamo to set
+     * @param idprestamo the idprestamo to set
      */
-    public void setIdPrestamo(BigDecimal idPrestamo) {
-        java.math.BigDecimal oldIdPrestamo = this.idPrestamo;
-        this.idPrestamo = idPrestamo;
-        propertyChangeSupport.firePropertyChange(PROP_IDPRESTAMO, oldIdPrestamo, idPrestamo);
+    public void setIdprestamo(BigDecimal idprestamo) {
+        java.math.BigDecimal oldIdprestamo = this.idprestamo;
+        this.idprestamo = idprestamo;
+        propertyChangeSupport.firePropertyChange(PROP_IDPRESTAMO, oldIdprestamo, idprestamo);
     }
 
     /**
@@ -50,19 +50,19 @@ public class Prestamo extends BaseModel{
     }
 
     /**
-     * @return the usuario
+     * @return the idusuario
      */
-    public BigDecimal getUsuario() {
-        return usuario;
+    public BigDecimal getIdusuario() {
+        return idusuario;
     }
 
     /**
-     * @param usuario the usuario to set
+     * @param idusuario the idusuario to set
      */
-    public void setUsuario(BigDecimal usuario) {
-        java.math.BigDecimal oldUsuario = this.usuario;
-        this.usuario = usuario;
-        propertyChangeSupport.firePropertyChange(PROP_USUARIO, oldUsuario, usuario);
+    public void setIdusuario(BigDecimal idusuario) {
+        java.math.BigDecimal oldIdusuario = this.idusuario;
+        this.idusuario = idusuario;
+        propertyChangeSupport.firePropertyChange(PROP_IDUSUARIO, oldIdusuario, idusuario);
     }
 
     /**
@@ -80,5 +80,5 @@ public class Prestamo extends BaseModel{
         this.fecha = fecha;
         propertyChangeSupport.firePropertyChange(PROP_FECHA, oldFecha, fecha);
     }
-     
+  
 }

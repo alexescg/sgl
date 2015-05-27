@@ -4,21 +4,26 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/models/Devolucion.java</file>
+            <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/views/FrmAgregarUsuario.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/models/PrestamoMaterial.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/models/BaseModel.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/models/Material.java</file>
-            <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/views/BaseFrm.java</file>
+            <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/views/FrmPrestamos.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/models/Usuario.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/utils/OracleUtils.java</file>
+            <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/views/FrmPrestamosMaterial.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/views/Autententificacion.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/models/LaboratorioMaterial.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/models/enums/Estatus.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/models/Prestamo.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/models/Laboratorio.java</file>
+            <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/views/FrmMaterialLaboratorios.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/views/MenuPrincipal.java</file>
+            <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/controllers/LaboratorioMateriales.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/models/Encargado.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/views/BaseFrame.java</file>
             <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/controllers/Materiales.java</file>
+            <file>file:/C:/Users/ALO/Documents/proyectos/sgl/src/views/FrmAgregarMateriales.java</file>
         </group>
     </open-files>
 </project-private>

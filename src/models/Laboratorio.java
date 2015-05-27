@@ -13,7 +13,7 @@ public class Laboratorio extends BaseModel{
     private BigDecimal idlaboratorio;
     private String nombre;
     private String clave;
-    private String idencargado;
+    private BigDecimal idencargado;
     private final transient PropertyChangeSupport propertyChangeSupport = new java.beans.PropertyChangeSupport(this);
 
     /**
@@ -67,15 +67,15 @@ public class Laboratorio extends BaseModel{
     /**
      * @return the idencargado
      */
-    public String getIdencargado() {
+    public BigDecimal getIdencargado() {
         return idencargado;
     }
 
     /**
      * @param idencargado the idencargado to set
      */
-    public void setIdencargado(String idencargado) {
-        java.lang.String oldIdencargado = this.idencargado;
+    public void setIdencargado(BigDecimal idencargado) {
+        java.math.BigDecimal oldIdencargado = this.idencargado;
         this.idencargado = idencargado;
         propertyChangeSupport.firePropertyChange(PROP_IDENCARGADO, oldIdencargado, idencargado);
     }
