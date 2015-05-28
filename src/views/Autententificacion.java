@@ -101,7 +101,7 @@ public class Autententificacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bttnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttnEntrarActionPerformed
-        if ((inTxtAdmini.getText().equals("admin")&& inTxtContra.getText().equals("Administrador1234"))){
+        if ((inTxtAdmini.getText().equals("labs")&& inTxtContra.getText().equals("abcd1234"))){
                 MenuPrincipal menuAdd = new MenuPrincipal();
                 menuAdd.setVisible(true);
                 this.dispose();
