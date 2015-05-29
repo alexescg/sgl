@@ -30,7 +30,8 @@ import utils.OracleUtils;
 public class FrmDevolucion extends javax.swing.JFrame {
 
     List<Usuario> usuarios = (List<Usuario>) Usuarios.select(OracleUtils.getDBConexion(), "select idusuario, nombre from usuario", Usuario.class);
-    List<Prestamo> prestamos = (List<Prestamo>) Prestamos.select(OracleUtils.getDBConexion(), "select * from prestamo", Prestamo.class);
+    List<Prestamo> prestamos = (List<Prestamo>) Prestamos.select(OracleUtils.getDBConexion(), "select * from prestamo where idPrestamo not in(select idPrestamo from devolucion)", Prestamo.class);
+    List<Devoluciones> devo= (List<Devoluciones>) Devoluciones.select(OracleUtils.getDBConexion(), "select * from devolucion",Devoluciones.class);
 
     /**
      * Creates new form FrmProveedores
@@ -65,10 +66,12 @@ public class FrmDevolucion extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lblDescri = new javax.swing.JLabel();
         lblDesc = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Prestamos");
+        setResizable(false);
 
         btnAgregarMateriales.setText("Devolver");
         btnAgregarMateriales.addActionListener(new java.awt.event.ActionListener() {
@@ -80,20 +83,10 @@ public class FrmDevolucion extends javax.swing.JFrame {
         jLabel1.setText("Solicitud de Material");
 
         comboPrestamos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboPrestamos.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboPrestamosItemStateChanged(evt);
-            }
-        });
-        comboPrestamos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboPrestamosActionPerformed(evt);
-            }
-        });
 
-        jLabel2.setText("Devolucion");
+        jLabel2.setText("Prestamo");
 
-        jButton1.setText("Ver Detalles");
+        jButton1.setText("Ver Descripcion");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -107,28 +100,22 @@ public class FrmDevolucion extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(btnAgregarMateriales))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(comboPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(85, 85, 85)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(26, 26, 26)
-                                        .addComponent(lblDesc)))))))
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comboPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnAgregarMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblDesc)
+                                .addComponent(jButton1)
+                                .addComponent(lblDescri)))
+                        .addGap(212, 212, 212)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -143,11 +130,13 @@ public class FrmDevolucion extends javax.swing.JFrame {
                         .addComponent(comboPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(lblDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(105, 105, 105)
-                .addComponent(btnAgregarMateriales)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDescri, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnAgregarMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -156,36 +145,40 @@ public class FrmDevolucion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMaterialesActionPerformed
-
-        Random r = new Random();
-        Integer id = r.nextInt(100);
-        BigDecimal idPrestamo = prestamos.get(comboPrestamos.getSelectedIndex()).getIdprestamo();
-        
+        try {
+            Random r = new Random();
+            Integer id = r.nextInt(100);
+            
+            
+            BigDecimal idPrestamo = prestamos.get(comboPrestamos.getSelectedIndex()).getIdprestamo();
+            //int id = Integer.parseInt(inTxtDevo.getText());
             Devoluciones.executeQuery(OracleUtils.getDBConexion(),
                     String.format("insert into devolucion values(%s, %s, '%s')",
                             id,
                             idPrestamo,
                             BaseModel.COMPLETADO));
+            
+          /*  Materiales.executeQuery(OracleUtils.getDBConexion(),
+                        String.format("UPDATE LABORATORIO_MATERIAL set EXISTENCIA = %s WHERE idLaboratorio = %s AND idMaterial = %s",
+                                cantidad,
+                                idLaboratorio,
+                                idMaterial
+                        ));*/
             JOptionPane.showMessageDialog(rootPane, "Devuelto exitosamente.");
-            lblDesc.setText(BaseModel.VACIO);
-
+            lblDescri.setText(BaseModel.VACIO);
+            List<Prestamo> prestamos = (List<Prestamo>) Prestamos.select(OracleUtils.getDBConexion(), "select * from prestamo where idPrestamo not in(select idPrestamo from devolucion)", Prestamo.class);
+            Prestamos.fillCombo(comboPrestamos, prestamos, "idprestamo", Prestamo.class);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmDevolucion.class.getName()).log(Level.SEVERE, null, ex);
+        }
       
 
     }//GEN-LAST:event_btnAgregarMaterialesActionPerformed
 
-    private void comboPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPrestamosActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_comboPrestamosActionPerformed
-
-    private void comboPrestamosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboPrestamosItemStateChanged
-
-    }//GEN-LAST:event_comboPrestamosItemStateChanged
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String descripcion = prestamos.get(comboPrestamos.getSelectedIndex()).getDescripcion();
         System.out.println("descripcion = " + descripcion);
-        lblDesc.setText(descripcion);
+        lblDescri.setText(descripcion);
     }//GEN-LAST:event_jButton1ActionPerformed
     /**
      * @param args the command line arguments
@@ -232,5 +225,6 @@ public class FrmDevolucion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblDesc;
+    private javax.swing.JLabel lblDescri;
     // End of variables declaration//GEN-END:variables
 }

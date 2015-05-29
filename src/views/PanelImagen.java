@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 public class PanelImagen extends javax.swing.JPanel {
 
     public PanelImagen() {
-        this.setSize(400, 280);
+        this.setSize(600, 480);
     }
 
     @Override

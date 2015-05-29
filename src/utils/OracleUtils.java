@@ -7,13 +7,14 @@ import java.sql.Statement;
 
 /**
  *
- * @author Alejandro Escobedo
+ * @author Ricardo Peña
  */
 public class OracleUtils {
     
     private static final String url = "jdbc:oracle:thin:@localhost:1521:XE";
-    private static final  String usuario ="labs";
-    private static final String contrasena = "abcd1234";
+    //Cambiar el nombre y usuario por el del administrador de la base de datos
+    private static final  String usuario ="azinthehollow";
+    private static final String contrasena = "1337";
     private static Connection con;
     private static Statement st;
     private static String query = null;
